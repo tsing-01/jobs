@@ -1,6 +1,7 @@
 // 1、connect to database
 // 1.1 import mongoose
 const mongoose = require('mongoose')
+mongoose.set("strictQuery", false);
 // 1.2 connect to database
 mongoose.connect('mongodb://localhost:27017/jobs', {
     useNewUrlParser: true

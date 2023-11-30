@@ -4,7 +4,10 @@ const md5 = require('blueimp-md5');
 
 // 1. Connect to the database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/jobs_test');
+mongoose.set("strictQuery", false);
+mongoose.connect('mongodb://localhost:27017/jobs_test', {
+    useNewUrlParser: true
+});
 const conn = mongoose.connection;
 conn.on('connected', function () {
     console.log('Database connection successful');
