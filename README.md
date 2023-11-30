@@ -9,3 +9,7 @@
 ## env
 * client and server in localhost:3000
 * socket communication in localhost:4000
+
+## repositories
+* server: https://github.com/tsing-01/jobs-server
+* client: https://github.com/tsing-01/jobs-client
