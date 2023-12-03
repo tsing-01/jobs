@@ -13,3 +13,7 @@
 ## repositories
 * server: https://github.com/tsing-01/jobs-server
 * client: https://github.com/tsing-01/jobs-client
+
+## env
+* development: .env.development
+* production: .env.production

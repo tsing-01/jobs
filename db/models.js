@@ -3,9 +3,10 @@
 const mongoose = require('mongoose')
 mongoose.set("strictQuery", false);
 // 1.2 connect to database
-mongoose.connect('mongodb://localhost:27017/jobs', {
+
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true
-})
+});
 // 1.3 get connection object
 const conn = mongoose.connection
 // 1.4 bind connection success listener
@@ -31,7 +32,7 @@ const userSchema = mongoose.Schema({
     header: {
         type: String
     }, // avatar name
-    post: {
+    position: {
         type: String
     }, // position
     info: {
