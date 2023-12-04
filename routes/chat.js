@@ -6,7 +6,7 @@ const { UserModel, ChatModel } = require('../db/models.js');
 // Get all related chat information for the current user
 router.get('/messages', function(req, res) {
   // Get userid from the cookie in the request
-  const userid = req.cookies.userid;
+  const userid = req.headers['jobs-token'];
   // Query all user document arrays
   UserModel.find(function(err, userDocs) {
     // Use an object to store all user information: key is user's _id, val is a user object consisting of name and header
@@ -26,7 +26,7 @@ router.get('/messages', function(req, res) {
 router.post('/isread', function(req, res) {
   // Get from and to from the request
   const from = req.body.from;
-  const to = req.cookies.userid;
+  const to = req.headers['jobs-token'];
   // Update the chat data in the database (including: multi:true specifies whether to update multiple entries. By default, only one entry is updated)
   ChatModel.update({ from, to, read: false }, { read: true }, { multi: true }, function(err, doc) {
     res.send({ code: 0, data: doc.nModified }); // Number of updates

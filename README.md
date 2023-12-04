@@ -14,6 +14,9 @@
 * server: https://github.com/tsing-01/jobs-server
 * client: https://github.com/tsing-01/jobs-client
 
+## mongodb
+* MONGO_URL=mongodb+srv://yshaots:[pwd]@tsing01.esyjlli.mongodb.net/jobs?retryWrites=true&w=majority
+
 ## env
 * development: .env.development
 * production: .env.production

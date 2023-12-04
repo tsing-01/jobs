@@ -20,7 +20,7 @@ router.post('/login', function(req, res) {
   UserModel.findOne({ username: username, password: md5(password) }, filter, function(err, user) {
     if (user) { // Login successful
       // Generate a cookie and save it in the browser
-      res.cookie('userid', user._id, { maxAge: 1000 * 60 * 60 * 24 });
+      // res.cookie('userid', user._id, { maxAge: 1000 * 60 * 60 * 24 });
       res.send({ code: 0, data: user });
     } else {
       res.send({ code: 1, msg: 'Incorrect username or password' });
@@ -40,7 +40,7 @@ router.post('/register', function(req, res) {
       const userModel = new UserModel({ username: username, password: md5(password), type: type });
       userModel.save(function(error, user) {
         // Generate a cookie (userid: user._id) and save it in the browser
-        res.cookie('userid', user._id, { maxAge: 1000 * 60 * 60 * 24 });
+        // res.cookie('userid', user._id, { maxAge: 1000 * 60 * 60 * 24 });
         // Return JSON data containing user information
         const data = { username: username, type: type, _id: user._id }; // Do not return the password
         res.send({ code: 0, data: data });

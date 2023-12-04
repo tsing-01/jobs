@@ -7,7 +7,7 @@ const { UserModel } = require('../db/models.js');
 // Update user information
 router.post('/update', function(req, res) {
   // Get userid from the request's cookie
-  const userid = req.cookies.userid;
+  const userid = req.headers['jobs-token'];
   // If it does not exist (cookie in the browser has been deleted)
   if (!userid) {
     res.send({ code: 1, msg: 'Please log in first' });
@@ -16,8 +16,6 @@ router.post('/update', function(req, res) {
   const user = req.body;
   UserModel.findByIdAndUpdate({ _id: userid }, user, function(error, oldUser) {
     if (!oldUser) { // Cookie has been tampered with
-      // Delete the cookie
-      res.clearCookie('userid');
       // Return a prompt message
       res.send({ code: 1, msg: 'Please log in first' });
     } else {
@@ -33,7 +31,7 @@ router.post('/update', function(req, res) {
 // Get user information
 router.get('/info', function(req, res) {
   // Get userid from the request's cookie
-  const userid = req.cookies.userid;
+  const userid = req.headers['jobs-token'];
   // If it does not exist, directly return a prompt message
   if (!userid) {
     return res.send({ code: 1, msg: 'Please log in first' });
