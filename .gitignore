@@ -8,6 +8,5 @@
 # production
 /build
 
-.env
-.env.development
-.env.production
+/.env
+.env.*
