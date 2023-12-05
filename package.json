@@ -6,6 +6,10 @@
   },
   "description": "jobs application server",
   "main": "app.js",
+  "homepage": "https://jobs-client-jobs-server-online.up.railway.app",
+  "engines": {
+    "node": "16.14.0"
+  },
   "email": "yshaots@bu.edu",
   "scripts": {
     "start": "nodemon ./bin/www"
