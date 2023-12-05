@@ -4,8 +4,7 @@ const {
 module.exports = function (server) {
   // Get the IO object
   const io = require('socket.io')(server);
-  io.set('transports', ['websocket']); // use websocket to transport data
-  io.set('origins', 'https://jobs-server-jobs-server-online.up.railway.app/*'); // set origins
+  io.set('origins', '*//*'); // set origins
   // Monitor connections (callback when a client connects)
   io.on('connection', function (socket) {
     // Bind the sendMsg listener to receive messages sent by the client
