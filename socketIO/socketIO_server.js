@@ -3,9 +3,15 @@ const {
 } = require('../db/models');
 module.exports = function (server) {
   // Get the IO object
-  const io = require('socket.io')(server);
-  io.set('transports', ['websocket']); // use websocket to transport data
-  io.set('origins', '*'); // set origins
+  const io = require('socket.io')(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"],
+      transports: ['websocket', 'polling'],
+      credentials: true
+    },
+    allowEIO3: true
+  });
   // Monitor connections (callback when a client connects)
   io.on('connection', function (socket) {
     // Bind the sendMsg listener to receive messages sent by the client
